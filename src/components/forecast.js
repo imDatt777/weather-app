@@ -28,11 +28,11 @@ const Forecast = (props) => {
     };
 
     return (
-        <div className='forecast flex justify-between mt-[30px] tablet:justify-center tablet:mt-[50px]'>
+        <div className='forecast grid grid-cols-3 gap-4 mt-[10px] tablet:flex tablet:justify-center '>
             {forecastData.map((item, idx) => (
                 <div
-                    className={`m-[5px] rounded-[10px] px-[5px] py-[10px] flex flex-col items-center w-[12%] tablet:px-[10px] tablet:py-[15px] 
-                    tablet:min-w-[100px] desktop:py-[30px] ${
+                    className={`m-[5px] rounded-[10px] px-[5px] py-[10px] flex flex-col items-center tablet:px-[10px] tablet:py-[15px] 
+                    desktop:py-[30px] desktop:w-[150px] ${
                         activeDay(formatDate(item?.date)) ? "bg-[#303134]" : ""
                     }`}
                     key={idx}

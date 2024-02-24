@@ -75,7 +75,7 @@ const SearchBar = (props) => {
     }, [inputValue, prevInputValue]);
 
     return (
-        <div className='max-w-md mx-auto h-[200px]'>
+        <div className='max-w-md mx-auto h-[180px]'>
             <div className='search relative'>
                 <input
                     className={`border-none focus:outline-none py-[5px] px-[10px] w-full rounded-t-xl

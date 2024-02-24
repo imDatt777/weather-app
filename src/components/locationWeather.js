@@ -95,11 +95,17 @@ const LocationWeather = () => {
                                     fetchForecast,
                                 }}
                             />
+                            <h3 className='text-center text-white text-[20px] font-bold'>
+                                Current Weather
+                            </h3>
                             <CurrentWeather
                                 {...{
                                     currentWeather,
                                 }}
                             />
+                            <h3 className='text-center text-white text-[20px] font-bold mt-[20px] tablet:mt-[40px]'>
+                                Weather Forecast
+                            </h3>
                             <Forecast
                                 {...{
                                     forecastData,

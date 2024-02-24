@@ -83,17 +83,17 @@ const SearchBar = (props) => {
         <div className='h-[180px] flex justify-between items-start'>
             <div className='flex items-center '>
                 <img
-                    className='h-[40px] w-[40px] tablet:h-[60px] tablet:w-[60px]'
+                    className='h-[35px] w-[35px] tablet:h-[50px] tablet:w-[50px]'
                     src={weather}
                     alt='Weather'
                 />
                 {!isMobile && (
-                    <p className='font-bold text-primary text-[24px] ml-[10px]'>
+                    <p className='font-bold text-primary tablet:text-[24px] ml-[10px]'>
                         WeatherNow
                     </p>
                 )}
             </div>
-            <div className='w-[240px] tablet: min-w-[400px]'>
+            <div className=' tablet:min-w-[400px]'>
                 <div className='search relative'>
                     <input
                         className={`border-none focus:outline-none py-[5px] px-[10px] w-full rounded-t-xl

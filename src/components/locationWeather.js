@@ -14,6 +14,7 @@ import { formatForecastData } from "../utilities/helperMethods";
 import API_URLS from "../utilities/apiUrl";
 
 const LocationWeather = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [currentWeather, setCurrentWeather] = useState(null);
     const [loading, setLoading] = useState(true);
     const [forecastData, setforecastData] = useState([]);
@@ -72,6 +73,17 @@ const LocationWeather = () => {
             fetchWeather(latitude, longitude);
             fetchForecast(latitude, longitude);
         });
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // cleanup function to remove the event listener when the component unmounts
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     useEffect(() => {
@@ -81,7 +93,7 @@ const LocationWeather = () => {
     }, [forecast]);
 
     return (
-        <div className='bg-[#202124] p-[20px] tablet:p-[50px] h-[100vh]'>
+        <div className='bg-[#03131A] p-[20px] tablet:p-[50px] h-[100vh] tablet:flex tablet:justify-center'>
             {loading ? (
                 <Loader />
             ) : (
@@ -90,12 +102,12 @@ const LocationWeather = () => {
                         <div>
                             <SearchBar
                                 {...{
-                                    setCurrentWeather,
+                                    isMobile,
                                     fetchWeather,
                                     fetchForecast,
                                 }}
                             />
-                            <h3 className='text-center text-white text-[20px] font-bold'>
+                            <h3 className='text-center text-primary text-[20px] font-bold'>
                                 Current Weather
                             </h3>
                             <CurrentWeather
@@ -103,7 +115,7 @@ const LocationWeather = () => {
                                     currentWeather,
                                 }}
                             />
-                            <h3 className='text-center text-white text-[20px] font-bold mt-[20px] tablet:mt-[40px]'>
+                            <h3 className='text-center text-primary text-[20px] font-bold mt-[20px] tablet:mt-[40px]'>
                                 Weather Forecast
                             </h3>
                             <Forecast

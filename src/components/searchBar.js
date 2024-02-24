@@ -10,12 +10,17 @@ import {
 
 // Importing Assets
 import search from "../assets/search.png";
+import weather from "../assets/weather.png";
 
 // Importing API URLs
 import API_URLS from "../utilities/apiUrl";
 
 const SearchBar = (props) => {
-    const { fetchWeather = () => {}, fetchForecast = () => {} } = props;
+    const {
+        isMobile,
+        fetchWeather = () => {},
+        fetchForecast = () => {},
+    } = props;
     const [inputValue, setInputValue] = useState("");
     const [prevInputValue, setPrevInputValue] = useState("");
     const [cities, setCities] = useState([]);
@@ -75,35 +80,49 @@ const SearchBar = (props) => {
     }, [inputValue, prevInputValue]);
 
     return (
-        <div className='max-w-md mx-auto h-[180px]'>
-            <div className='search relative'>
-                <input
-                    className={`border-none focus:outline-none py-[5px] px-[10px] w-full rounded-t-xl
-                            ${!showList && "rounded-xl"}`}
-                    type='text'
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder='Type to search...'
-                    maxLength={30}
-                />
+        <div className='h-[180px] flex justify-between items-start'>
+            <div className='flex items-center '>
                 <img
-                    className='absolute h-[20px] w-[20px] top-[7px] right-[10px]'
-                    src={search}
-                    alt='Search'
+                    className='h-[40px] w-[40px] tablet:h-[60px] tablet:w-[60px]'
+                    src={weather}
+                    alt='Weather'
                 />
+                {!isMobile && (
+                    <p className='font-bold text-primary text-[24px] ml-[10px]'>
+                        WeatherNow
+                    </p>
+                )}
             </div>
-            <ul className='bg-white rounded-b-lg'>
-                {showList &&
-                    cities.map((city, idx) => (
-                        <li
-                            className='px-[5px] cursor-pointer border-solid border-b-[1px] last:border-none'
-                            key={idx}
-                            onClick={handleCitySelect.bind(this, city)}
-                        >
-                            {city}
-                        </li>
-                    ))}
-            </ul>
+            <div className='w-[240px] tablet: min-w-[400px]'>
+                <div className='search relative'>
+                    <input
+                        className={`border-none focus:outline-none py-[5px] px-[10px] w-full rounded-t-xl
+                            ${!showList && "rounded-xl"}`}
+                        type='text'
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        placeholder='Type to search...'
+                        maxLength={30}
+                    />
+                    <img
+                        className='absolute h-[20px] w-[20px] top-[7px] right-[10px]'
+                        src={search}
+                        alt='Search'
+                    />
+                </div>
+                <ul className='bg-[#fff] rounded-b-lg'>
+                    {showList &&
+                        cities.map((city, idx) => (
+                            <li
+                                className='px-[5px] cursor-pointer border-solid border-b-[1px] last:border-none'
+                                key={idx}
+                                onClick={handleCitySelect.bind(this, city)}
+                            >
+                                {city}
+                            </li>
+                        ))}
+                </ul>
+            </div>
         </div>
     );
 };

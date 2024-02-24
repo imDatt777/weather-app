@@ -37,7 +37,7 @@ const Forecast = (props) => {
                     }`}
                     key={idx}
                 >
-                    <p className='text-white text-[10px] tablet:text-[12px] desktop:text-[16px]'>
+                    <p className='text-primary text-[10px] tablet:text-[12px] desktop:text-[16px]'>
                         {formatDate(item?.date)}
                     </p>
                     <img
@@ -45,10 +45,10 @@ const Forecast = (props) => {
                         src={item?.conditions?.imgSrc}
                         alt='Weather'
                     />
-                    <p className='text-white text-[12px] font-medium mt-[5px] tablet:text-[16px] desktop:text-[20px] desktop:mt-[10px]'>
+                    <p className='text-primary text-[12px] font-medium mt-[5px] tablet:text-[16px] desktop:text-[20px] desktop:mt-[10px]'>
                         {item?.conditions?.condition}
                     </p>
-                    <p className='text-white text-[10px]  mt-[5px] desktop:text-[16px] desktop:mt-[10px]'>
+                    <p className='text-primary text-[10px]  mt-[5px] desktop:text-[16px] desktop:mt-[10px]'>
                         {Math.round(item?.maxTemp)} °C /{" "}
                         {Math.round(item?.minTemp)} °C
                     </p>
